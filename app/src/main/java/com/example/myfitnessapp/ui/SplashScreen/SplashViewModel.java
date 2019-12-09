@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.myfitnessapp.data.local.WorkOut;
+import com.example.myfitnessapp.data.remote.FireBaseMuscle;
 import com.example.myfitnessapp.repository.LocalDataSource;
 import com.example.myfitnessapp.repository.RemoteDataSource;
 
@@ -16,17 +17,28 @@ import java.util.List;
 
 public class SplashViewModel extends ViewModel {
     RemoteDataSource remoteDataSource;
-    LocalDataSource localDataSource ;
+    LocalDataSource localDataSource;
 
     public SplashViewModel() {
         remoteDataSource = new RemoteDataSource();
-        localDataSource= new LocalDataSource();
+        localDataSource = new LocalDataSource();
     }
 
     public LiveData<List<WorkOut>> getLocalWorkOutList() {
         return remoteDataSource.getWorkouts();
     }
-    public void saveWorkouts(List<WorkOut> workOuts){
+
+    public void saveWorkouts(List<WorkOut> workOuts) {
         localDataSource.saveWorkouts(workOuts);
     }
+    public LiveData<List<WorkOut>> getWorkOuts(){
+        return  localDataSource.listLiveData();
+    }
+    public LiveData<List<FireBaseMuscle>> getMuscles(){
+        return remoteDataSource.getMuscles();
+    }
+    public void saveMuscles(List<FireBaseMuscle> muscles){
+        localDataSource.saveMuscles(muscles);
+    }
+
 }

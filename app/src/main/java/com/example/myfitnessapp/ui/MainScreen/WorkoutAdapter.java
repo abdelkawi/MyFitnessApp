@@ -1,6 +1,7 @@
 package com.example.myfitnessapp.ui.MainScreen;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -10,14 +11,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myfitnessapp.R;
 import com.example.myfitnessapp.data.local.WorkOut;
+import com.example.myfitnessapp.ui.Interfaces.AddToFavorites;
+import com.example.myfitnessapp.ui.Interfaces.OnWorkoutClicked;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class WorkoutAdapter extends RecyclerView.Adapter<WorkOutViewHolder> {
     List<WorkOut> list;
+    AddToFavorites addToFavorites;
+    OnWorkoutClicked onWorkoutClicked;
 
-    public WorkoutAdapter(List<WorkOut> list) {
+    public WorkoutAdapter(List<WorkOut> list, AddToFavorites addToFavorites, OnWorkoutClicked onWorkoutClicked) {
         this.list = list;
+        this.addToFavorites = addToFavorites;
+        this.onWorkoutClicked = onWorkoutClicked;
     }
 
     @NonNull
@@ -28,8 +36,15 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkOutViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull WorkOutViewHolder holder, int position) {
-        holder.bind(list.get(position));
+    public void onBindViewHolder(@NonNull WorkOutViewHolder holder, final int position) {
+        holder.bind(list.get(position), addToFavorites);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onWorkoutClicked.onWorkOutClicked(list.get(position));
+
+            }
+        });
     }
 
     @Override

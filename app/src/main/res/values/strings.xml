@@ -2,5 +2,10 @@
     <string name="app_name">MyFitnessApp</string>
     <string name="username">Enter Your Name</string>
     <string name="login">Login</string>
-    <string name="welcome_msg" >Welcome to my fitness app</string>
+    <string name="welcome_msg">Welcome to my fitness app</string>
+    <string name="next_step">Next workout</string>
+    <string name="prev_step">Previous workout</string>
+    <string name="muscles">Muscles</string>
+    <string name="my_favorites">My favorites</string>
+    <string name="title_activity_main2">Main2Activity</string>
 </resources>

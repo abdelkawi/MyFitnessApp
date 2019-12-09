@@ -1,5 +1,4 @@
-package com.example.myfitnessapp.ui.MainScreen;
-
+package com.example.myfitnessapp.ui.WorkOutsList;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
@@ -10,33 +9,23 @@ import com.example.myfitnessapp.repository.RemoteDataSource;
 
 import java.util.List;
 
+public class WorkOutListViewModel extends ViewModel {
 
-public class MainViewModel extends ViewModel {
     LocalDataSource localDataSource;
-    RemoteDataSource remoteDataSource;
-    LiveData<List<WorkOut>> listLiveData;
-    static  LiveData<List<WorkOut>> currentList ;
 
-    public MainViewModel() {
-        this.localDataSource = new LocalDataSource();
+    public WorkOutListViewModel() {
+        localDataSource = new LocalDataSource();
         remoteDataSource = new RemoteDataSource();
-        listLiveData = localDataSource.listLiveData();
     }
 
-    public LiveData<List<WorkOut>> getWorkOutLiveData() {
-        return listLiveData;
+    public LiveData<List<WorkOut>> getWorkOutsByMuscle(String muscleName) {
+        return localDataSource.getWorOutByMuscle(muscleName);
     }
-
     public void updateFavorites(String userName, WorkOut workOut) {
         if (workOut.isFav())
             remoteDataSource.addToUserFavorites(userName, workOut);
         else remoteDataSource.deleteFromUserFavorites(userName, workOut);
         localDataSource.updateFavorites(workOut);
-    }
-
-    public LiveData<List<WorkOut>> getUserFavorites(String userName){
-        return remoteDataSource.getUserWorkouts(userName);
-    }
-
+    }    RemoteDataSource remoteDataSource;
 
 }

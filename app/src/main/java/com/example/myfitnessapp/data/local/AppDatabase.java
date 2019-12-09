@@ -6,7 +6,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-@Database(entities = {WorkOut.class}, version = 1, exportSchema = false)
+import com.example.myfitnessapp.data.remote.FireBaseMuscle;
+
+@Database(entities = {WorkOut.class, FireBaseMuscle.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase sInstance;
     private static final String DATABASE_NAME = "my-fitness-app";
@@ -24,6 +26,7 @@ public abstract class AppDatabase extends RoomDatabase {
         return sInstance;
     }
     public abstract WorkOutDao workOutDao();
+    public abstract MusclesDao musclesDao();
 
     public static AppDatabase getInstance() {
         return sInstance;

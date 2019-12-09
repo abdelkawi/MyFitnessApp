@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import com.example.myfitnessapp.R;
+import com.example.myfitnessapp.data.local.SharedPreferneceUtils;
 import com.example.myfitnessapp.ui.MainScreen.MainActivity;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
@@ -36,7 +37,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 loginViewModel.getIsUserLogged().observe(this, new Observer<Boolean>() {
                     @Override
                     public void onChanged(Boolean aBoolean) {
-                        if(aBoolean) {
+                        if (aBoolean) {
+                            SharedPreferneceUtils sharedPreferneceUtils = new SharedPreferneceUtils(LoginActivity.this);
+                            sharedPreferneceUtils.setUserName(userNameEt.getText().toString());
                             finish();
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         }

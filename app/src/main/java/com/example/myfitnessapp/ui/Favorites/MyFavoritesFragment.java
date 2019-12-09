@@ -1,4 +1,4 @@
-package com.example.myfitnessapp.ui.MainScreen;
+package com.example.myfitnessapp.ui.Favorites;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,22 +17,24 @@ import com.example.myfitnessapp.data.local.SharedPreferneceUtils;
 import com.example.myfitnessapp.data.local.WorkOut;
 import com.example.myfitnessapp.ui.Interfaces.AddToFavorites;
 import com.example.myfitnessapp.ui.Interfaces.OnWorkoutClicked;
+import com.example.myfitnessapp.ui.MainScreen.MainViewModel;
+import com.example.myfitnessapp.ui.MainScreen.WorkoutAdapter;
 import com.example.myfitnessapp.ui.WorkOutDetails.WorkOutDetailsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainFragment extends Fragment implements AddToFavorites, OnWorkoutClicked {
+public class MyFavoritesFragment extends Fragment implements AddToFavorites, OnWorkoutClicked {
     MainViewModel mainViewModel;
     RecyclerView listRv;
     WorkoutAdapter workoutAdapter;
     SharedPreferneceUtils sharedPreferneceUtils;
-    List<WorkOut> currentList  = new ArrayList<>();
+    List<WorkOut> currentList = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        return inflater.inflate(R.layout.fragment_favorites, container, false);
     }
 
     @Override
@@ -42,15 +44,18 @@ public class MainFragment extends Fragment implements AddToFavorites, OnWorkoutC
         sharedPreferneceUtils = new SharedPreferneceUtils(getContext());
         listRv.setLayoutManager(new GridLayoutManager(getContext(), 2));
         mainViewModel = new MainViewModel();
-        mainViewModel.getWorkOutLiveData().observe(this, new Observer<List<WorkOut>>() {
+        loadData();
+
+    }
+    void loadData(){
+        mainViewModel.getUserFavorites(sharedPreferneceUtils.getUserName()).observe(this, new Observer<List<WorkOut>>() {
             @Override
             public void onChanged(List<WorkOut> workOuts) {
-                workoutAdapter = new WorkoutAdapter(workOuts, MainFragment.this ,MainFragment.this);
+                workoutAdapter = new WorkoutAdapter(workOuts, MyFavoritesFragment.this ,MyFavoritesFragment.this);
                 listRv.setAdapter(workoutAdapter);
-                currentList= workOuts ;
+                currentList= workOuts;
             }
         });
-
     }
 
 
@@ -58,6 +63,7 @@ public class MainFragment extends Fragment implements AddToFavorites, OnWorkoutC
     public void addToFavorites(WorkOut workOut) {
         workOut.setFav(!workOut.isFav());
         mainViewModel.updateFavorites(sharedPreferneceUtils.getUserName(), workOut);
+        loadData();
     }
 
     @Override
