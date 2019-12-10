@@ -53,7 +53,7 @@ public class WorkOutListFragment extends Fragment implements AddToFavorites , On
 
     @Override
     public void addToFavorites(WorkOut workOut) {
-        workOut.setFav(!workOut.isFav());
+        workOut.setIsFav(!workOut.isIsFav());
         workOutListViewModel.updateFavorites(sharedPreferneceUtils.getUserName(), workOut);
     }
 

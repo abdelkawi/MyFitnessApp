@@ -22,7 +22,7 @@ public class WorkOutListViewModel extends ViewModel {
         return localDataSource.getWorOutByMuscle(muscleName);
     }
     public void updateFavorites(String userName, WorkOut workOut) {
-        if (workOut.isFav())
+        if (workOut.isIsFav())
             remoteDataSource.addToUserFavorites(userName, workOut);
         else remoteDataSource.deleteFromUserFavorites(userName, workOut);
         localDataSource.updateFavorites(workOut);

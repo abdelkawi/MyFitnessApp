@@ -22,7 +22,7 @@ public class WorkOutViewHolder extends RecyclerView.ViewHolder {
     public void bind(final WorkOut workOut, final AddToFavorites addToFavorites) {
         nameTV.setText(workOut.getName());
         affectedMuscleTV.setText(workOut.getAffectedMuscle());
-        if (workOut.isFav())
+        if (workOut.isIsFav())
             addToFavoritesIV.setImageResource(R.drawable.ic_add_to_favorites_on);
         else addToFavoritesIV.setImageResource(R.drawable.ic_add_to_favorites_off);
         addToFavoritesIV.setOnClickListener(new View.OnClickListener() {

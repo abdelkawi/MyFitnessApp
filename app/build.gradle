@@ -3,6 +3,16 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
+
+    signingConfigs {
+        release {
+            keyAlias 'abdelkawi'
+            storePassword 'Mohmed@1234'
+            keyPassword 'Mohamed@1234'
+            storeFile file('myfitnessapp.jks')
+        }
+    }
+
     defaultConfig {
         applicationId "com.example.myfitnessapp"
         minSdkVersion 21
@@ -15,11 +25,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
         }
     }
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
 dependencies {

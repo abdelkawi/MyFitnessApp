@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 <ImageButton
-
+    android:contentDescription="@string/play"
     android:layout_width="100dp"
     android:layout_height="100dp"
     android:layout_gravity="center"
@@ -11,7 +11,7 @@
     style="@style/ExoMediaButton.Play"
     />
     <ImageButton
-
+        android:contentDescription="@string/pause"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"

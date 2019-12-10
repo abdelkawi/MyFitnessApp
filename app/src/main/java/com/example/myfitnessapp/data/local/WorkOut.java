@@ -13,7 +13,7 @@ public class WorkOut {
     String name;
     String affectedMuscle;
     String function;
-    boolean isFav;
+    boolean isIsFav;
     String image;
     String description;
     String video;
@@ -42,12 +42,12 @@ public class WorkOut {
         this.image = image;
     }
 
-    public boolean isFav() {
-        return isFav;
+    public boolean isIsFav() {
+        return isIsFav;
     }
 
-    public void setFav(boolean fav) {
-        isFav = fav;
+    public void setIsFav(boolean isIsFav) {
+        this.isIsFav = isIsFav;
     }
 
     @NonNull

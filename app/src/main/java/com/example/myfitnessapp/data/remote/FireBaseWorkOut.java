@@ -7,7 +7,7 @@ public class FireBaseWorkOut {
     String affectedMuscle;
     String video;
     String description;
-    boolean isFav;
+    boolean isIsFav;
 
 
     public String getImage() {
@@ -37,22 +37,22 @@ public class FireBaseWorkOut {
         this.description = description;
     }
 
-    public boolean isFav() {
-        return isFav;
+    public boolean isIsFav() {
+        return isIsFav;
     }
 
-    public void setFav(boolean fav) {
-        isFav = fav;
+    public void setIsFav(boolean fav) {
+        isIsFav = fav;
     }
 
     public FireBaseWorkOut(String name, String affectedMuscle, String function
-            , String image, String video, String description, boolean isFav) {
+            , String image, String video, String description, boolean isIsFav) {
         this.name = name;
         this.affectedMuscle = affectedMuscle;
         this.function = function;
         this.image = image;
         this.video = video;
-        this.isFav= isFav;
+        this.isIsFav= isIsFav;
         this.description = description;
     }
 
@@ -88,7 +88,7 @@ public class FireBaseWorkOut {
         workOut.setImage(image);
         workOut.setDescription(description);
         workOut.setVideo(video);
-        workOut.setFav(isFav);
+        workOut.setIsFav(isIsFav);
         return workOut;
     }
 }

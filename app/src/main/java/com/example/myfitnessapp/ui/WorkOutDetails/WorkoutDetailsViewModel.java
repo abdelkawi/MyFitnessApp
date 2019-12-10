@@ -21,7 +21,7 @@ public class WorkoutDetailsViewModel extends ViewModel {
         return localDataSource.getWorOutByName(workOutName);
     }
     public void updateFavorites(String userName, WorkOut workOut) {
-        if (workOut.isFav())
+        if (workOut.isIsFav())
             remoteDataSource.addToUserFavorites(userName, workOut);
         else remoteDataSource.deleteFromUserFavorites(userName, workOut);
         localDataSource.updateFavorites(workOut);

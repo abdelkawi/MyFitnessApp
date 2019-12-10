@@ -12,6 +12,7 @@
 
         <ImageView
             android:layout_width="match_parent"
+            android:contentDescription="@null"
             android:layout_height="wrap_content"
             android:layout_weight="1"
 

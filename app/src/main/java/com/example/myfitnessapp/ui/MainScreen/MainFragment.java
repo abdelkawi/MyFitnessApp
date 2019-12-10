@@ -56,7 +56,7 @@ public class MainFragment extends Fragment implements AddToFavorites, OnWorkoutC
 
     @Override
     public void addToFavorites(WorkOut workOut) {
-        workOut.setFav(!workOut.isFav());
+        workOut.setIsFav(!workOut.isIsFav());
         mainViewModel.updateFavorites(sharedPreferneceUtils.getUserName(), workOut);
     }
 
@@ -72,4 +72,5 @@ public class MainFragment extends Fragment implements AddToFavorites, OnWorkoutC
                 .addToBackStack("details")
                 .commit();
     }
+
 }

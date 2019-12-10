@@ -7,5 +7,8 @@
     <string name="prev_step">Previous workout</string>
     <string name="muscles">Muscles</string>
     <string name="my_favorites">My favorites</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="pause">pasue button</string>
+    <string name="play">play button</string>
+    <string name="workout_img">this is an image for workout</string>
+    <string name="addFav">this is to help to add workout to fav</string>
 </resources>

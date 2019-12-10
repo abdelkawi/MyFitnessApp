@@ -88,7 +88,10 @@ public class RemoteDataSource {
     }
 
     public void addToUserFavorites(String userName, WorkOut workOut) {
-        usersRef.document(userName).collection("favorites").document(workOut.getName()).set(workOut).addOnSuccessListener(new OnSuccessListener<Void>() {
+        usersRef.document(userName)
+                .collection("favorites")
+                .document(workOut.getName())
+                .set(workOut).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 Log.d("xxxxxxxxUserFav", "added");

@@ -28,7 +28,7 @@ public class MainViewModel extends ViewModel {
     }
 
     public void updateFavorites(String userName, WorkOut workOut) {
-        if (workOut.isFav())
+        if (workOut.isIsFav())
             remoteDataSource.addToUserFavorites(userName, workOut);
         else remoteDataSource.deleteFromUserFavorites(userName, workOut);
         localDataSource.updateFavorites(workOut);
@@ -37,6 +37,11 @@ public class MainViewModel extends ViewModel {
     public LiveData<List<WorkOut>> getUserFavorites(String userName){
         return remoteDataSource.getUserWorkouts(userName);
     }
+    public LiveData<List<WorkOut>> getRemoteWorkOutList() {
+        return remoteDataSource.getWorkouts();
+    }
 
-
+    public void saveWorkouts(List<WorkOut> workOuts) {
+        localDataSource.saveWorkouts(workOuts);
+    }
 }

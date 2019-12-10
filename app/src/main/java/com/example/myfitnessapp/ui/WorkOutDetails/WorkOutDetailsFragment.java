@@ -165,7 +165,7 @@ public class WorkOutDetailsFragment extends Fragment implements Player.EventList
                 workOutTitle.setText(workOut.getName());
                 workOutAffectedMuscle.setText(workOut.getAffectedMuscle());
                 workoutFunctionTV.setText(workOut.getDescription());
-                if (workOut.isFav()) {
+                if (workOut.isIsFav()) {
                     addToFavIV.setImageResource(R.drawable.ic_add_to_favorites_on);
                 } else addToFavIV.setImageResource(R.drawable.ic_add_to_favorites_off);
 
@@ -175,11 +175,11 @@ public class WorkOutDetailsFragment extends Fragment implements Player.EventList
         addToFavIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mWorkOut.isFav()) {
-                    mWorkOut.setFav(false);
+                if (mWorkOut.isIsFav()) {
+                    mWorkOut.setIsFav(false);
                     addToFavIV.setImageResource(R.drawable.ic_add_to_favorites_off);
                 } else {
-                    mWorkOut.setFav(true);
+                    mWorkOut.setIsFav(true);
                     addToFavIV.setImageResource(R.drawable.ic_add_to_favorites_on);
                 }
 

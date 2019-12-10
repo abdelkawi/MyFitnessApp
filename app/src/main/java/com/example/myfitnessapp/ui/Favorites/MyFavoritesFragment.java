@@ -61,7 +61,7 @@ public class MyFavoritesFragment extends Fragment implements AddToFavorites, OnW
 
     @Override
     public void addToFavorites(WorkOut workOut) {
-        workOut.setFav(!workOut.isFav());
+        workOut.setIsFav(!workOut.isIsFav());
         mainViewModel.updateFavorites(sharedPreferneceUtils.getUserName(), workOut);
         loadData();
     }
